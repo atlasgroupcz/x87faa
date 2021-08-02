@@ -13,17 +13,20 @@ public class NotifyService {
 
     private final Mailer mailer;
     private final String notifyTarget;
+    private final String username;
 
     @Inject
     public NotifyService(Mailer mailer,
-                         @Value("${notify.target}") String notifyTarget) {
+                         @Value("${notify.target}") String notifyTarget,
+                         @Value("${email.username}") String username) {
         this.mailer = mailer;
         this.notifyTarget = notifyTarget;
+        this.username = username;
     }
 
     public void notifyPickup(String msg, String decoded) {
         mailer.sendMail(EmailBuilder.startingBlank().withSubject("Message pickup")
-                .from("notification@pickupservice.agrp.dev")
+                .from(username)
                 .to(notifyTarget).appendText("Msg " + msg + " pickup on " + ZonedDateTime.now() + ", decoded: " + decoded)
                 .buildEmail());
     }
