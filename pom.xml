@@ -14,7 +14,7 @@
         <java.version>16</java.version>
         <build.image>maven:3.6.3-openjdk-16</build.image>
         <run.image>openjdk:16</run.image>
-        <docker.group>utils</docker.group>
+        <docker.group>timestamping</docker.group>
         <atlascon.version>master-SNAPSHOT</atlascon.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.boot.version>2.5.2</spring.boot.version>
